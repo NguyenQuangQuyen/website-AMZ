@@ -43,8 +43,8 @@ function CountUp({ end, suffix, duration = 2000 }: { end: number; suffix: string
 
 export default function Stats() {
   return (
-    <section style={{ padding: "16px 24px 24px", background: "#0f1923" }}>
-      <div className="stats-inner">
+    <section style={{ background: "linear-gradient(135deg, #1d75d9 0%, #6c3fc5 60%, #1d75d9 100%)", padding: "48px 24px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
