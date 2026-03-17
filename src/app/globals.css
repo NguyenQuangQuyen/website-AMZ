@@ -177,3 +177,90 @@ footer ul {
   background: var(--primary);
   color: white;
 }
+
+/* ── Responsive: Services ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Responsive: WhyUs ── */
+.whyus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .whyus-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+@media (max-width: 480px) {
+  .capabilities-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Responsive: Testimonials ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ── Responsive: Stats ── */
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #1d75d9 0%, #6c3fc5 60%, #1d75d9 100%);
+  border-radius: 20px;
+  padding: 40px 48px;
+}
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+@media (max-width: 768px) {
+  .stats-inner { padding: 32px 24px; border-radius: 14px; }
+  .stats-row { justify-content: center; }
+  .stats-row > * { flex: 1 1 40%; }
+}
+@media (max-width: 480px) {
+  .stats-row > * { flex: 1 1 100%; }
+}
+
+/* ── Responsive: Partners ── */
+.partners-fade-left {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 120px; z-index: 2;
+  background: linear-gradient(to right, #f8fafc, transparent);
+  pointer-events: none;
+}
+.partners-fade-right {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 120px; z-index: 2;
+  background: linear-gradient(to left, #f8fafc, transparent);
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .partners-fade-left, .partners-fade-right { width: 48px; }
+}
