@@ -10,27 +10,35 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#0056D2", // Nodo Blue
-          hover: "#0044A8",
-          glow: "rgba(0, 86, 210, 0.3)",
+          DEFAULT: "#1d75d9", // Nodo Blue
+          hover: "#155eb0",
+          glow: "rgba(29, 117, 217, 0.3)",
         },
         secondary: {
-          DEFAULT: "#FF4E25", // Aigocy Orange
-          hover: "#E63E1A",
-          glow: "rgba(255, 78, 37, 0.3)",
+          DEFAULT: "#001b3d", // Nodo Dark Navy
+          hover: "#000f24",
+          glow: "rgba(0, 27, 61, 0.3)",
         },
-        background: "#F1F1F1", // Aigocy Grey
-        foreground: "#111111", // Aigocy Black
-        card: "rgba(255, 255, 255, 0.7)",
+        accent: {
+          DEFAULT: "#0dcaf0",
+          hover: "#0bacce"
+        },
+        background: "#ffffff",
+        foreground: "#333333",
+        card: "#ffffff",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Outfit", "sans-serif"],
+        display: ["Montserrat", "sans-serif"],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'primary-gradient': 'linear-gradient(90deg, #1d75d9 0%, #0dcaf0 100%)',
       },
+      boxShadow: {
+        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+      }
     },
   },
   plugins: [],

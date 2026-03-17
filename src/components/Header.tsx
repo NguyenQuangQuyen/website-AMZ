@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Menu, X, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,117 +17,166 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { name: 'Trang chủ', href: '/' },
-    { name: 'Về chúng tôi', href: '#about' },
-    { name: 'Dịch vụ', href: '#services' },
-    { name: 'Dự án', href: '#projects' },
-    { name: 'Tin tức', href: '#news' },
+    { name: 'Trang chủ', href: '/', hasDropdown: false },
+    { name: 'Giới thiệu', href: '#about', hasDropdown: false },
+    { name: 'Dịch vụ & giải pháp', href: '#services', hasDropdown: false },
+    { name: 'Dự án', href: '#projects', hasDropdown: false },
+    { name: 'Tin tức', href: '#news', hasDropdown: false },
   ];
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-          isScrolled 
-            ? 'py-4 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg shadow-black/5' 
-            : 'py-8 bg-transparent'
-        }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          backgroundColor: '#ffffff',
+          boxShadow: isScrolled ? '0 4px 12px rgba(0,0,0,0.08)' : 'none',
+          transition: 'all 0.3s ease',
+        }}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          {/* Logo - Nodo Style Boldness */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 bg-primary group-hover:bg-primary-hover rounded-2xl flex items-center justify-center text-white font-black text-2xl transition-all duration-300 shadow-xl shadow-primary/20 rotate-0 group-hover:-rotate-12">
-              A
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-secondary rounded-full border-2 border-white" />
+        <div
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            padding: '0 24px',
+            height: '80px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          {/* Logo - Left */}
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img 
+                src="/images/logo header.svg" 
+                alt="AMZ Logo" 
+                style={{ height: '50px', width: 'auto' }} 
+              />
             </div>
-            <span className="text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors">
-              AMZ<span className="text-secondary">.</span>
-            </span>
           </Link>
 
-          {/* Desktop Nav - Clean & Modern */}
-          <nav className="hidden lg:flex items-center gap-10">
+          {/* Desktop Navigation - Center */}
+          <nav
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+            className="desktop-nav"
+          >
             {menuItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-[15px] font-bold text-foreground/70 hover:text-primary transition-all relative group"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '8px 16px',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  color: '#001b3d',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#1d75d9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = '#001b3d'; }}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                {item.hasDropdown && <ChevronDown size={14} style={{ opacity: 0.5 }} />}
               </Link>
             ))}
-            
-            {/* CTA Button - Aigocy Black Button Style */}
-            <Link 
-              href="#contact" 
-              className="px-8 py-3.5 bg-foreground text-white rounded-full font-bold text-sm hover:bg-primary hover:scale-105 transition-all duration-300 shadow-xl shadow-black/10 flex items-center gap-2 group"
-            >
-              Liên hệ ngay
-              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
           </nav>
 
+          {/* Right Side - Language & CTA */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexShrink: 0 }} className="desktop-cta">
+            <Link
+              href="#contact"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 28px',
+                backgroundColor: '#1d75d9',
+                color: '#ffffff',
+                borderRadius: '50px',
+                fontSize: '14px',
+                fontWeight: 700,
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(29, 117, 217, 0.3)',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#1559a7'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#1d75d9'; }}
+            >
+              Liên hệ
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
           {/* Mobile Toggle */}
-          <button 
-            className="lg:hidden w-12 h-12 flex items-center justify-center bg-white/50 backdrop-blur-md rounded-xl text-foreground shadow-sm"
+          <button
+            className="mobile-toggle"
+            style={{
+              display: 'none',
+              width: '40px',
+              height: '40px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#001b3d',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+            }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            className="fixed inset-0 z-[60] bg-white lg:hidden flex flex-col items-center justify-center p-8"
-          >
-            <button 
-              className="absolute top-8 right-8 w-14 h-14 bg-slate-50 rounded-full flex items-center justify-center text-foreground"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <X size={32} />
+      {/* Responsive CSS */}
+      <style jsx global>{`
+        @media (max-width: 1024px) {
+          .desktop-nav { display: none !important; }
+          .desktop-cta { display: none !important; }
+          .mobile-toggle { display: flex !important; }
+        }
+      `}</style>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 60, backgroundColor: '#ffffff' }}>
+          <div style={{ height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', borderBottom: '1px solid #f1f5f9' }}>
+            <img 
+              src="/images/logo header.svg" 
+              alt="AMZ Logo" 
+              style={{ height: '40px', width: 'auto' }} 
+            />
+            <button onClick={() => setIsMobileMenuOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#001b3d' }}>
+              <X size={26} />
             </button>
-            
-            <nav className="flex flex-col gap-10 text-center">
-              {menuItems.map((item, idx) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="text-4xl font-black hover:text-primary transition-colors tracking-tight"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
+          </div>
+          <nav style={{ padding: '24px' }}>
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                style={{ display: 'block', padding: '16px 0', fontSize: '20px', fontWeight: 700, color: '#001b3d', textDecoration: 'none', borderBottom: '1px solid #f8fafc' }}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                <Link 
-                  href="#contact" 
-                  className="inline-block mt-4 px-12 py-5 bg-primary text-white rounded-full font-black text-xl shadow-2xl shadow-primary/30"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Liên hệ
-                </Link>
-              </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </>
   );
 };

@@ -2,104 +2,143 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MousePointer2, Sparkles, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background text-foreground">
-      {/* Background Glowing Orbs - Aigocy Style */}
-      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[140px] animate-pulse" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
+    <section className="relative min-h-[450px] lg:min-h-screen flex items-center overflow-hidden pt-12 lg:pt-20 bg-[#001b3d] text-white" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', backgroundColor: '#001b3d' }}>
+      {/* CSS Override for Mobile Height - ensures desktop style is preserved but mobile is tight */}
+      <style jsx>{`
+        @media (max-width: 1023px) {
+          section { min-height: 450px !important; height: 450px !important; }
+          .hero-container { margin-top: 20px !important; }
+          .hero-content { margin-left: 0 !important; justify-content: center !important; text-align: center; }
+          .hero-text { max-width: 100% !important; }
+          .hero-p { margin-left: auto !important; margin-right: auto !important; margin-bottom: 30px !important; }
+        }
+      `}</style>
+      {/* Background Image Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/banner.png"
+          alt="Technology Background"
+          className="w-full h-full object-cover object-center opacity-80 lg:opacity-40"
+        />
+        {/* Transparent overlay for mobile to let image show fully, gradient for desktop */}
+        <div className="absolute inset-0 bg-[#001b3d]/20 lg:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001b3d]/90 via-[#001b3d]/60 to-transparent hidden lg:block" />
+      </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center">
+      {/* Decorative Blue Squares - Top Left */}
+      <div className="absolute top-[30%] left-[8%] z-10 hidden lg:flex flex-col gap-2">
+        <div className="flex gap-2">
+            <div className="w-10 h-10 bg-[#001b3d]/50 border border-white/5" />
+            <div className="w-10 h-10 bg-[#1d75d9]" />
+        </div>
+        <div className="w-10 h-10 bg-[#1d75d9]/60" />
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10 mt-10 hero-container" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        <div className="flex hero-content" style={{ display: 'flex', justifyContent: 'flex-start', marginLeft: '10%' }}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-5xl"
+            className="max-w-3xl hero-text"
+            style={{ maxWidth: '800px' }}
           >
-            <span className="inline-flex items-center gap-2 py-2 px-6 rounded-full bg-white border border-black/5 text-primary text-sm font-black mb-8 shadow-sm tracking-widest uppercase">
-              <Sparkles size={16} /> Empowering Innovation
-            </span>
+            {/* White Pill Badge */}
+            <div 
+              style={{
+                display: 'inline-block',
+                padding: '8px 32px',
+                borderRadius: '9999px',
+                backgroundColor: '#ffffff',
+                color: '#001b3d',
+                fontSize: '12px',
+                fontWeight: 900,
+                marginBottom: '40px',
+                boxShadow: '0 10px 30px rgba(255,255,255,0.2)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.2em'
+              }}
+            >
+              AMZ
+            </div>
             
-            <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black mb-10 leading-[0.9] tracking-tighter">
-              GIÁ TRỊ <br />
-              <span className="text-primary italic">TẠO NÊN</span> <br />
-              <span className="relative inline-block">
-                KHÁC BIỆT
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: '100%' }}
-                  transition={{ delay: 1, duration: 1 }}
-                  className="absolute -bottom-4 left-0 h-4 bg-secondary/40 -z-10 rounded-full" 
-                />
-              </span>
+            <h1 
+              style={{
+                fontSize: 'clamp(40px, 8vw, 84px)',
+                color: '#ffffff',
+                fontWeight: 900,
+                marginBottom: '32px',
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em'
+              }}
+            >
+              Giải pháp toàn diện,<br />
+              dịch vụ <span style={{ color: '#1d75d9' }}>hoàn hảo.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-foreground/60 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-              AMZ dẫn đầu trong việc cung cấp hệ sinh thái giải pháp công nghệ tiên tiến, 
-              biến thách thức thành cơ hội thông qua trí tuệ nhân tạo.
+            <p 
+              className="hero-p"
+              style={{
+                fontSize: 'clamp(16px, 2vw, 20px)',
+                color: '#ffffff',
+                marginBottom: '48px',
+                maxWidth: '650px',
+                lineHeight: 1.6,
+                fontWeight: 600
+              }}
+            >
+              Chúng tôi luôn luôn tin tưởng và nỗ lực phấn đấu hết mình nhằm cung cấp các sản phẩm, 
+              dịch vụ hoàn hảo mang lại giá trị cho khách hàng, cho xã hội.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="px-10 py-5 bg-foreground text-white rounded-full font-black text-lg hover:bg-primary transition-all duration-300 shadow-2xl shadow-black/20 flex items-center gap-3 group">
-                Bắt đầu ngay <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
-              </button>
-              <button className="px-10 py-5 bg-white border-2 border-black/5 text-foreground rounded-full font-black text-lg hover:border-primary/20 transition-all duration-300 flex items-center gap-2">
-                Xem Video <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center ml-2"><div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-primary border-b-[6px] border-b-transparent ml-1" /></div>
-              </button>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-black/5 pt-12 w-full max-w-4xl"
-          >
-            {[
-              { label: 'Dự án thành công', val: '50+' },
-              { label: 'Đối tác tin cậy', val: '100+' },
-              { label: 'Chuyên gia AI', val: '20+' },
-              { label: 'Năm kinh nghiệm', val: '12+' },
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <span className="text-4xl md:text-5xl font-black text-foreground mb-2">{stat.val}</span>
-                <span className="text-xs text-foreground/40 font-bold uppercase tracking-widest text-center">{stat.label}</span>
-              </div>
-            ))}
+            {/* <div style={{ display: 'flex' }}>
+              <a 
+                href="#"
+                style={{
+                  padding: '16px 40px',
+                  backgroundColor: '#1d75d9',
+                  color: '#ffffff',
+                  borderRadius: '9999px',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 20px rgba(29, 117, 217, 0.4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  transition: 'background-color 0.3s ease'
+                }}
+              >
+                PROFILE AMZ
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </a>
+            </div> */}
           </motion.div>
         </div>
       </div>
 
-      {/* Floating Elements - Aigocy style */}
-      <motion.div 
-        animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-        transition={{ duration: 5, repeat: Infinity }}
-        className="absolute top-[20%] left-[10%] hidden xl:block"
+      {/* Bottom Centered Pill Tab */}
+      <div 
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          zIndex: 20
+        }}
       >
-        <div className="w-20 h-20 bg-white/40 backdrop-blur-md rounded-3xl border border-white/40 shadow-xl flex items-center justify-center transform -rotate-12">
-          <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
-            <div className="w-4 h-4 rounded-full bg-secondary" />
-          </div>
-        </div>
-      </motion.div>
-      
-      <motion.div 
-        animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-        transition={{ duration: 7, repeat: Infinity }}
-        className="absolute bottom-[20%] right-[10%] hidden xl:block"
-      >
-        <div className="w-24 h-24 bg-white/40 backdrop-blur-md rounded-[2.5rem] border border-white/40 shadow-xl flex items-center justify-center transform rotate-12">
-          <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-             <div className="w-6 h-1 bg-primary rounded-full animate-pulse" />
-          </div>
-        </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
