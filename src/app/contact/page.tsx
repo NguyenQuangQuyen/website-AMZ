@@ -29,9 +29,9 @@ export default function ContactPage() {
     width: "100%",
     background: "#fff",
     border: "1px solid #e5e7eb",
-    borderRadius: "6px", // Tăng bo góc cho hợp với form to
-    padding: "16px 16px", // Tăng mạnh padding để ô cao và to hơn
-    fontSize: "15px", // Tăng size chữ để cân đối với khung
+    borderRadius: "6px",
+    padding: "16px 16px",
+    fontSize: "15px",
     color: "#001b3d",
     outline: "none",
     boxSizing: "border-box",
@@ -43,8 +43,9 @@ export default function ContactPage() {
       <main className="bg-white">
         {/* Hero / Title area */}
         <div
+          className="contact-hero-wrap contact-outer-wrap"
           style={{
-            paddingTop: "100px",
+            paddingTop: "140px",
             paddingBottom: "32px",
             maxWidth: "1100px",
             margin: "0 auto",
@@ -65,25 +66,6 @@ export default function ContactPage() {
             >
               Liên hệ
             </span>
-            <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
-              <line
-                x1="0"
-                y1="6"
-                x2="18"
-                y2="6"
-                stroke="#2563eb"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <polyline
-                points="13,1 19,6 13,11"
-                fill="none"
-                stroke="#2563eb"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
           </div>
           <h1
             style={{
@@ -105,6 +87,7 @@ export default function ContactPage() {
 
         {/* 2-col content */}
         <div
+          className="contact-outer-wrap"
           style={{
             maxWidth: "1100px",
             margin: "0 auto",
@@ -114,16 +97,15 @@ export default function ContactPage() {
           }}
         >
           <div
+            className="contact-layout"
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1.8fr",
               border: "1px solid #e5e7eb",
               borderRadius: "10px",
               overflow: "hidden",
             }}
           >
             {/* Left: info cards */}
-            <div style={{ borderRight: "1px solid #e5e7eb" }}>
+            <div className="contact-info-panel">
               {/* Address */}
               <div
                 style={{
@@ -306,7 +288,10 @@ export default function ContactPage() {
             </div>
 
             {/* Right: form */}
-            <div style={{ background: "#eef2fb", padding: "32px 28px" }}>
+            <div
+              className="contact-form-panel"
+              style={{ background: "#eef2fb", padding: "32px 28px" }}
+            >
               {sent ? (
                 <div
                   style={{
@@ -365,18 +350,12 @@ export default function ContactPage() {
                     gap: "20px", // Tăng gap giữa các hàng
                   }}
                 >
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
-                      gap: "16px",
-                    }}
-                  >
+                  <div className="contact-form-row">
                     <div>
                       <label
                         style={{
                           display: "block",
-                          fontSize: "13px", // Nhãn cũng to lên một chút
+                          fontSize: "13px",
                           fontWeight: 500,
                           color: "#4b5563",
                           marginBottom: "8px",
@@ -426,13 +405,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
-                      gap: "16px",
-                    }}
-                  >
+                  <div className="contact-form-row">
                     <div>
                       <label
                         style={{
@@ -552,7 +525,10 @@ export default function ContactPage() {
         </div>
 
         {/* Map */}
-        <div style={{ width: "100%", height: "380px", marginTop: "60px" }}>
+        <div
+          className="contact-map"
+          style={{ width: "100%", height: "380px", marginTop: "60px" }}
+        >
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.3!2d105.7833!3d21.0245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5b4f3a1f4b%3A0x0!2zUGjhuqFtIEjDuW5n!5e0!3m2!1svi!2svn!4v1234567890"
             width="100%"
