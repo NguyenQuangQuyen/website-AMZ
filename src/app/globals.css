@@ -80,13 +80,21 @@ footer ul {
   flex-shrink: 0;
   background-color: #1a6fe8;
   color: #ffffff !important;
-  font-size: 1.25rem;
-  font-weight: 10;
-  padding: 8px 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 18px 48px;
   display: inline-block;
   text-decoration: none !important;
   white-space: nowrap;
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(26, 111, 232, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .footer-cta-btn:hover {
@@ -185,10 +193,14 @@ footer ul {
   gap: 20px;
 }
 @media (max-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Responsive: WhyUs ── */
@@ -210,7 +222,9 @@ footer ul {
   }
 }
 @media (max-width: 480px) {
-  .capabilities-grid { grid-template-columns: 1fr 1fr; }
+  .capabilities-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* ── Responsive: Testimonials ── */
@@ -242,25 +256,47 @@ footer ul {
   gap: 24px;
 }
 @media (max-width: 768px) {
-  .stats-inner { padding: 32px 24px; border-radius: 14px; }
-  .stats-row { justify-content: center; }
-  .stats-row > * { flex: 1 1 40%; }
+  .stats-inner {
+    padding: 32px 24px;
+    border-radius: 14px;
+  }
+  .stats-row {
+    justify-content: center;
+  }
+  .stats-row > * {
+    flex: 1 1 40%;
+  }
 }
 @media (max-width: 480px) {
-  .stats-row > * { flex: 1 1 100%; }
+  .stats-row > * {
+    flex: 1 1 100%;
+  }
 }
 
 /* ── Responsive: Partners ── */
 .partners-fade-left {
-  position: absolute; left: 0; top: 0; bottom: 0; width: 120px; z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
   background: linear-gradient(to right, #f8fafc, transparent);
   pointer-events: none;
 }
 .partners-fade-right {
-  position: absolute; right: 0; top: 0; bottom: 0; width: 120px; z-index: 2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
   background: linear-gradient(to left, #f8fafc, transparent);
   pointer-events: none;
 }
 @media (max-width: 600px) {
-  .partners-fade-left, .partners-fade-right { width: 48px; }
+  .partners-fade-left,
+  .partners-fade-right {
+    width: 48px;
+  }
 }

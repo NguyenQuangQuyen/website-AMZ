@@ -97,7 +97,7 @@ const Header = () => {
           {/* Right Side - Language & CTA */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexShrink: 0 }} className="desktop-cta">
             <Link
-              href="#contact"
+              href="contact"
               style={{
                 display: 'flex',
                 alignItems: 'center',
