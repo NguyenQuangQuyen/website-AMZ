@@ -164,8 +164,8 @@ export default function ContactPage() {
                       lineHeight: 1.6,
                     }}
                   >
-                    Tầng 3, tòa nhà Audi, số 8 Phạm Hùng, Phường Mễ Trì, Quận
-                    Nam Từ Liêm, Thành phố Hà Nội
+                    Tầng 2, tòa nhà Savina Building, 44 Tràng Tiền, Quận Hoàn
+                    Kiếm, TP Hà Nội
                   </p>
                 </div>
               </div>
@@ -215,10 +215,7 @@ export default function ContactPage() {
                     Điện thoại
                   </p>
                   <p style={{ fontSize: "12px", color: "#6b7280" }}>
-                    Hành chính: (+84) 462.932.083
-                  </p>
-                  <p style={{ fontSize: "12px", color: "#6b7280" }}>
-                    Kỹ thuật: +84 89.808.9886
+                    0965 279 666
                   </p>
                 </div>
               </div>
@@ -278,11 +275,9 @@ export default function ContactPage() {
                     Email
                   </p>
                   <p style={{ fontSize: "12px", color: "#6b7280" }}>
-                    Hành chính: lienhe@nodo.vn
+                    info@amzet.vn
                   </p>
-                  <p style={{ fontSize: "12px", color: "#6b7280" }}>
-                    Kỹ thuật: hotro@nodo.vn
-                  </p>
+                 
                 </div>
               </div>
             </div>

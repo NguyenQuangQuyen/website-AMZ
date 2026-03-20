@@ -20,7 +20,7 @@ const Header = () => {
     { name: "Trang chủ", href: "/", hasDropdown: false },
     { name: "Giới thiệu", href: "#about", hasDropdown: false },
     { name: "Dịch vụ & giải pháp", href: "#services", hasDropdown: false },
-    { name: "Dự án", href: "#projects", hasDropdown: false },
+    { name: "Dự án", href: "/projects", hasDropdown: false },
     { name: "Tin tức", href: "#news", hasDropdown: false },
   ];
 

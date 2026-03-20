@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  /* Nodo Colors */
+  /* AMZ Colors */
   --primary: #1d75d9;
   --primary-hover: #155eb0;
   --secondary: #001b3d;
@@ -354,5 +354,312 @@ footer ul {
   .contact-map {
     height: 220px !important;
     margin-top: 32px !important;
+  }
+}
+
+/* ── Projects Page ── */
+.projects-hero-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.projects-grid-animated {
+  animation: projectsFadeIn 0.4s ease-out both;
+}
+
+@keyframes projectsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card-stagger {
+  opacity: 0;
+  animation: cardSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.projects-grid-small {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1a1a2e;
+  cursor: pointer;
+  height: 240px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.project-card-featured {
+  height: 100%;
+  min-height: 412px;
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  transition: opacity 0.35s ease;
+}
+
+.project-overlay-default {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 55%);
+  opacity: 1;
+}
+
+.project-overlay-hover {
+  background: rgba(13, 71, 161, 0.88);
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(2px);
+}
+
+/* Text inside hover overlay — slides up on card hover */
+.project-overlay-hover .overlay-text {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s ease 0.05s,
+    transform 0.35s ease 0.05s;
+}
+
+/* Plus button inside hover overlay — scales up on card hover */
+.project-overlay-hover .overlay-btn {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 0.3s ease 0.15s,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+}
+
+.project-card:hover .project-overlay-hover .overlay-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover .project-overlay-hover .overlay-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Plus button hover state */
+.overlay-btn:hover {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Smaller cards get tighter text */
+.project-card-stagger .project-overlay-hover {
+  padding: 12px;
+  gap: 10px;
+  font-size: 11.5px;
+}
+
+.project-card-stagger .project-overlay-hover .overlay-text {
+  font-size: 11.5px !important;
+  line-height: 1.45 !important;
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-card-stagger .overlay-btn {
+  width: 34px !important;
+  height: 34px !important;
+}
+
+.project-card-stagger .overlay-btn span {
+  font-size: 18px !important;
+}
+
+.project-card:hover .project-overlay-default {
+  opacity: 0;
+}
+
+.project-card:hover .project-overlay-hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .projects-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card-featured {
+    min-height: 240px;
+  }
+  .projects-grid-small {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid-small {
+    grid-template-columns: 1fr;
+  }
+  .project-card {
+    height: 180px;
+  }
+}
+
+/* ── Projects filter tab hover ── */
+.project-tab-btn:hover {
+  color: #1d75d9 !important;
+}
+
+/* ── Testimonial Slider ── */
+.testimonial-slide-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideOutToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+@keyframes slideOutToRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+.slide-enter-right {
+  animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.slide-enter-left {
+  animation: slideInFromLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.slide-exit-left {
+  animation: slideOutToLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.slide-exit-right {
+  animation: slideOutToRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.project-detail-breadcrumb-link {
+  color: #1d75d9;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.project-detail-breadcrumb-link:hover {
+  color: #155eb0;
+  text-decoration: underline;
+}
+
+.project-detail-top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.project-detail-goals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.project-detail-testimonial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .project-detail-top,
+  .project-detail-goals,
+  .project-detail-testimonial {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
