@@ -288,18 +288,19 @@ const Footer = () => {
                   </div>
                 ))}
               </div>
-              <a
-                href="#"
+              <Link
+                href="/chinh-sach-quyen-rieng-tu"
                 style={{
                   display: "inline-block",
                   marginTop: "20px",
                   fontSize: "13px",
                   color: "rgba(255,255,255,0.6)",
+                  textDecoration: "underline",
                   textUnderlineOffset: "4px",
                 }}
               >
                 Chính sách quyền riêng tư
-              </a>
+              </Link>
             </div>
 
             {/* Col 3: Services */}
@@ -328,16 +329,31 @@ const Footer = () => {
                 }}
               >
                 {[
-                  "Dịch vụ Viễn thông",
-                  "Giải pháp doanh nghiệp (Odoo)",
-                  "Tài chính - ngân hàng",
-                  "Cổng thanh toán",
-                  "Thương mại điện tử",
-                  "Phát triển Blockchain",
+                  { label: "Dịch vụ Viễn thông", href: "/services/vien-thong" },
+                  {
+                    label: "Giải pháp doanh nghiệp (Odoo)",
+                    href: "/services/odoo",
+                  },
+                  {
+                    label: "Tài chính - ngân hàng",
+                    href: "/services/tai-chinh-ngan-hang",
+                  },
+                  {
+                    label: "Cổng thanh toán",
+                    href: "/services/cong-thanh-toan",
+                  },
+                  {
+                    label: "Thương mại điện tử",
+                    href: "/services/thuong-mai-dien-tu",
+                  },
+                  {
+                    label: "Phát triển Blockchain",
+                    href: "/services/blockchain",
+                  },
                 ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
                       style={{
                         fontSize: "13px",
                         color: "rgba(255,255,255,0.65)",
@@ -351,8 +367,8 @@ const Footer = () => {
                         (e.currentTarget.style.color = "rgba(255,255,255,0.65)")
                       }
                     >
-                      {item}
-                    </a>
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -384,16 +400,31 @@ const Footer = () => {
                 }}
               >
                 {[
-                  "Phát triển Web App",
-                  "Lập trình Back-end",
-                  "Lập trình Front-end",
-                  "Lập trình Mobile",
-                  "Giải pháp Lưu trữ",
-                  "Big Data",
+                  {
+                    label: "Phát triển Web App",
+                    href: "/services/phat-trien-web-app",
+                  },
+                  {
+                    label: "Lập trình Back-end",
+                    href: "/services/lap-trinh-back-end",
+                  },
+                  {
+                    label: "Lập trình Front-end",
+                    href: "/services/lap-trinh-front-end",
+                  },
+                  {
+                    label: "Lập trình Mobile",
+                    href: "/services/lap-trinh-mobile",
+                  },
+                  {
+                    label: "Giải pháp Lưu trữ",
+                    href: "/services/giai-phap-luu-tru",
+                  },
+                  { label: "Big Data", href: "/services/bigdata" },
                 ].map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
                       style={{
                         fontSize: "13px",
                         color: "rgba(255,255,255,0.65)",
@@ -407,8 +438,8 @@ const Footer = () => {
                         (e.currentTarget.style.color = "rgba(255,255,255,0.65)")
                       }
                     >
-                      {item}
-                    </a>
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

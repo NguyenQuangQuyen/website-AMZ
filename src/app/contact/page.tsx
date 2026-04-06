@@ -1,8 +1,121 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const fieldOptions = [
+  { value: "software", label: "Gia công phần mềm" },
+  { value: "web", label: "Phát triển Web App" },
+  { value: "mobile", label: "Lập trình Mobile" },
+  { value: "erp", label: "Giải pháp doanh nghiệp (ERP)" },
+  { value: "telecom", label: "Dịch vụ Viễn thông" },
+  { value: "banking", label: "Ngân hàng số" },
+  { value: "payment", label: "Cổng thanh toán" },
+  { value: "security", label: "An ninh mạng" },
+  { value: "data", label: "Phân tích dữ liệu" },
+];
+
+function CustomSelect({
+  value,
+  onChange,
+  placeholder,
+  inputStyle,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  inputStyle: React.CSSProperties;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const selected = fieldOptions.find((o) => o.value === value);
+
+  return (
+    <div ref={ref} style={{ position: "relative", width: "100%" }}>
+      <div
+        onClick={() => setOpen((o) => !o)}
+        style={{
+          ...inputStyle,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          cursor: "pointer",
+          color: selected ? "#001b3d" : "#9ca3af",
+          userSelect: "none",
+        }}
+      >
+        <span>{selected ? selected.label : placeholder}</span>
+        <span
+          style={{
+            fontSize: "11px",
+            color: "#6b7280",
+            marginLeft: "8px",
+            flexShrink: 0,
+          }}
+        >
+          {open ? "▲" : "▼"}
+        </span>
+      </div>
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 4px)",
+            left: 0,
+            right: 0,
+            background: "#fff",
+            border: "1px solid #e5e7eb",
+            borderRadius: "6px",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+            zIndex: 999,
+            overflow: "hidden",
+          }}
+        >
+          {fieldOptions.map((opt) => (
+            <div
+              key={opt.value}
+              onClick={() => {
+                onChange(opt.value);
+                setOpen(false);
+              }}
+              style={{
+                padding: "12px 16px",
+                fontSize: "14px",
+                color: opt.value === value ? "#1d75d9" : "#001b3d",
+                background: opt.value === value ? "#eff6ff" : "#fff",
+                cursor: "pointer",
+                fontWeight: opt.value === value ? 600 : 400,
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                if (opt.value !== value)
+                  (e.currentTarget as HTMLDivElement).style.background =
+                    "#f8fafc";
+              }}
+              onMouseLeave={(e) => {
+                if (opt.value !== value)
+                  (e.currentTarget as HTMLDivElement).style.background = "#fff";
+              }}
+            >
+              {opt.label}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -277,7 +390,6 @@ export default function ContactPage() {
                   <p style={{ fontSize: "12px", color: "#6b7280" }}>
                     info@amzet.vn
                   </p>
-                 
                 </div>
               </div>
             </div>
@@ -441,31 +553,12 @@ export default function ContactPage() {
                           (required)
                         </span>
                       </label>
-                      <select
-                        required
+                      <CustomSelect
                         value={form.field}
-                        onChange={(e) =>
-                          setForm({ ...form, field: e.target.value })
-                        }
-                        style={{
-                          ...inputStyle,
-                          color: form.field ? "#001b3d" : "#9ca3af",
-                        }}
-                      >
-                        <option value="" disabled>
-                          Gia công phần mềm
-                        </option>
-                        <option value="web">Phát triển Web App</option>
-                        <option value="mobile">Lập trình Mobile</option>
-                        <option value="erp">
-                          Giải pháp doanh nghiệp (ERP)
-                        </option>
-                        <option value="telecom">Dịch vụ Viễn thông</option>
-                        <option value="banking">Ngân hàng số</option>
-                        <option value="payment">Cổng thanh toán</option>
-                        <option value="security">An ninh mạng</option>
-                        <option value="data">Phân tích dữ liệu</option>
-                      </select>
+                        onChange={(v) => setForm({ ...form, field: v })}
+                        placeholder="Gia công phần mềm"
+                        inputStyle={inputStyle}
+                      />
                     </div>
                   </div>
 
@@ -525,7 +618,7 @@ export default function ContactPage() {
           style={{ width: "100%", height: "380px", marginTop: "60px" }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.3!2d105.7833!3d21.0245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5b4f3a1f4b%3A0x0!2zUGjhuqFtIEjDuW5n!5e0!3m2!1svi!2svn!4v1234567890"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4592.182324432295!2d105.85179301153815!3d21.025585487805422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abeb6c00146b%3A0xe1e31c80c52164ca!2zU2F2aW5hIEJ1aWxkaW5nLCBUcsOgbmcgVGnhu4FuLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e1!3m2!1svi!2s!4v1773999801989!5m2!1svi!2s"
             width="100%"
             height="100%"
             style={{ border: 0, display: "block" }}

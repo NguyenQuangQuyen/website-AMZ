@@ -123,6 +123,16 @@ footer ul {
   }
 }
 
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
 .animate-fade-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -354,6 +364,13 @@ footer ul {
   .contact-map {
     height: 220px !important;
     margin-top: 32px !important;
+  }
+  .contact-form-panel select,
+  .contact-form-panel input,
+  .contact-form-panel textarea {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -661,5 +678,89 @@ footer ul {
   .project-detail-testimonial {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+}
+
+/* ── Service Pages ── */
+@media (max-width: 768px) {
+  .service-intro-grid,
+  .service-detail-grid,
+  .service-cards-grid,
+  .service-3col-grid,
+  .service-2col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .projects-3col-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .testimonials-2col {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-4col {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ecom-models-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .blockchain-types-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 480px) {
+  .ecom-models-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .blockchain-types-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ── About pages ── */
+.about-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.stats-5col {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+@media (max-width: 768px) {
+  .about-services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .stats-5col {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .director-5th {
+    width: 100% !important;
+  }
+}
+@media (max-width: 480px) {
+  .stats-5col {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+.timeline-chevron-wrap {
+  overflow: hidden;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .timeline-chevron-wrap {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .timeline-chevron-wrap > div > div {
+    clip-path: none !important;
+    border-radius: 8px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
   }
 }
