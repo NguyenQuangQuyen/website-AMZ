@@ -83,91 +83,62 @@ const Footer = () => {
                 />
               </Link>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                }}
-              >
+              {[
+                {
+                  icon: <Shield size={18} color="#fff" />,
+                  text: "Công ty Cổ phần Công nghệ AMZ",
+                  bold: true,
+                },
+                {
+                  icon: <Shield size={18} color="#fff" />,
+                  text: "MST: 0106235097",
+                  bold: false,
+                },
+                {
+                  icon: <FileText size={18} color="#fff" />,
+                  text: "GPKD: Số 0106235097 do Sở KHĐT\nTp.Hà Nội cấp ngày 18/07/2013",
+                  bold: false,
+                },
+              ].map((item, i) => (
                 <div
+                  key={i}
                   style={{
-                    background: "#1d4ed8",
-                    padding: "8px",
-                    borderRadius: "6px",
-                    flexShrink: 0,
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "12px",
                   }}
                 >
-                  <Shield size={16} color="#fff" />
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      background: "#1d4ed8",
+                      borderRadius: "10px",
+                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <p
+                    style={{
+                      fontSize: item.bold ? "13px" : "12px",
+                      fontWeight: item.bold ? 600 : 400,
+                      color: item.bold
+                        ? "rgba(255,255,255,0.85)"
+                        : "rgba(255,255,255,0.55)",
+                      lineHeight: 1.6,
+                      whiteSpace: "pre-line",
+                      margin: 0,
+                      paddingTop: "8px",
+                    }}
+                  >
+                    {item.text}
+                  </p>
                 </div>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "rgba(255,255,255,0.75)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  Công ty Cổ phần Công nghệ AMZ
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                }}
-              >
-                <div
-                  style={{
-                    background: "#1d4ed8",
-                    padding: "8px",
-                    borderRadius: "6px",
-                    flexShrink: 0,
-                  }}
-                >
-                  <Shield size={16} color="#fff" />
-                </div>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    color: "rgba(255,255,255,0.5)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  MST: 0106235097
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                }}
-              >
-                <div
-                  style={{
-                    background: "#1d4ed8",
-                    padding: "8px",
-                    borderRadius: "6px",
-                    flexShrink: 0,
-                  }}
-                >
-                  <FileText size={16} color="#fff" />
-                </div>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    color: "rgba(255,255,255,0.5)",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  GPKD: Số 0106235097 do Sở KHĐT
-                  <br />
-                  Tp.Hà Nội cấp ngày 18/07/2013
-                </p>
-              </div>
+              ))}
 
               {/* Social */}
               <div style={{ display: "flex", gap: "10px", paddingTop: "4px" }}>
@@ -257,13 +228,17 @@ const Footer = () => {
                   >
                     <div
                       style={{
+                        width: "38px",
+                        height: "38px",
                         background: "#1d75d9",
-                        padding: "8px",
                         borderRadius: "50%",
                         flexShrink: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      <Icon size={14} color="#fff" />
+                      <Icon size={16} color="#fff" />
                     </div>
                     <div>
                       <p
